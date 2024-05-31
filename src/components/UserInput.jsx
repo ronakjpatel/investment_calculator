@@ -1,21 +1,4 @@
-import React, { useState } from "react";
-
-const UserInput = () => {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  const handleChange = (inputIdentifier, newValue) => {
-    setUserInput((prev_userInput) => {
-      return {
-        ...prev_userInput,
-        [inputIdentifier]: newValue,
-      };
-    });
-  };
+const UserInput = ({ input, onChangeInput }) => {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -24,9 +7,9 @@ const UserInput = () => {
           <input
             type="number"
             required
-            value={userInput.initialInvestment}
+            value={input.initialInvestment}
             onChange={(event) =>
-              handleChange("initialInvestment", event.target.value)
+              onChangeInput("initialInvestment", event.target.value)
             }
           />
         </p>
@@ -35,9 +18,9 @@ const UserInput = () => {
           <input
             type="number"
             required
-            value={userInput.annualInvestment}
+            value={input.annualInvestment}
             onChange={(event) =>
-              handleChange("annualInvestment", event.target.value)
+              onChangeInput("annualInvestment", event.target.value)
             }
           />
         </p>
@@ -48,9 +31,9 @@ const UserInput = () => {
           <input
             type="number"
             required
-            value={userInput.expectedReturn}
+            value={input.expectedReturn}
             onChange={(event) =>
-              handleChange("expectedReturn", event.target.value)
+              onChangeInput("expectedReturn", event.target.value)
             }
           />
         </p>
@@ -59,8 +42,8 @@ const UserInput = () => {
           <input
             type="number"
             required
-            value={userInput.duration}
-            onChange={(event) => handleChange("duration", event.target.value)}
+            value={input.duration}
+            onChange={(event) => onChangeInput("duration", event.target.value)}
           />
         </p>
       </div>
